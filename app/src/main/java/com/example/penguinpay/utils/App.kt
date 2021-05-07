@@ -18,6 +18,5 @@ class App: Application() {
             .setPrefsName(packageName)
             .setUseDefaultSharedPreference(true)
             .build()
-
     }
 }

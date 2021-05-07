@@ -11,6 +11,7 @@ import com.example.penguinpay.R
 import com.example.penguinpay.adapters.CountrySelectAdapter
 import com.example.penguinpay.databinding.CountrySelectSheetBinding
 import com.example.penguinpay.networking.CountryModel
+import com.example.penguinpay.utils.getCountryList
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
 
@@ -18,7 +19,7 @@ import java.util.*
  *Created by Yerimah on 5/7/2021.
  */
 class CountrySelectSheet(private val activity: MainActivity,
-                         private val onCountrySelected: (Int) -> Unit): BottomSheetDialogFragment() {
+                         private val onCountrySelected: (String) -> Unit): BottomSheetDialogFragment() {
 
     private lateinit var binding: CountrySelectSheetBinding
 
@@ -35,16 +36,9 @@ class CountrySelectSheet(private val activity: MainActivity,
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val countries = LinkedList<CountryModel>()
-        countries.add(CountryModel("NIGERIA", "NGN", R.drawable.flag_nigeria, 1))
-        countries.add(CountryModel("GHANA", "GHN", R.drawable.flag_ghana, 69))
-        countries.add(CountryModel("UNITED STATES", "USD", R.drawable.flag_united_states_of_america, 207))
-        countries.add(CountryModel("UNITED KINGDOM", "GP", R.drawable.flag_united_kingdom, 62))
-
-
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = RecyclerView.VERTICAL
         binding.countryRecyclerView.layoutManager = layoutManager
-        binding.countryRecyclerView.adapter = CountrySelectAdapter(countries, onCountrySelected)
+        binding.countryRecyclerView.adapter = CountrySelectAdapter(getCountryList(), onCountrySelected)
     }
 }

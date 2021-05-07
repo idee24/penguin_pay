@@ -6,8 +6,8 @@ package com.example.penguinpay.networking
  */
 
 data class CountryModel(
-    var name: String,
-    var currencyCode: String,
-    var image: Int,
-    var countryId: Int
+    var name: String = "",
+    var currencyCode: String = "",
+    var image: Int = 0,
+    var countryCode: String = ""
 )

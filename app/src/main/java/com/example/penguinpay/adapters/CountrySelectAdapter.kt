@@ -12,7 +12,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 /**
  *Created by Yerimah on 5/7/2021.
  */class CountrySelectAdapter (private val countries: List<CountryModel>,
-                               private val onCountrySelected: (Int) -> Unit):
+                               private val onCountrySelected: (String) -> Unit):
     RecyclerView.Adapter<CountrySelectAdapter.CountrySelectViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountrySelectViewHolder {
@@ -24,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView
         countries[position].let { country ->
             holder.nameTextView.text = country.name
             holder.flagImageView.setImageResource(country.image)
-            holder.itemView.setOnClickListener { onCountrySelected(country.countryId) }
+            holder.itemView.setOnClickListener { onCountrySelected(country.countryCode) }
         }
     }
 
