@@ -7,10 +7,7 @@ import com.example.penguinpay.Constants
 import com.example.penguinpay.MainActivity
 import com.example.penguinpay.R
 import com.example.penguinpay.databinding.FragmentTransactionBinding
-import com.example.penguinpay.utils.getCountryByCode
-import com.example.penguinpay.utils.isNotEmpty
-import com.example.penguinpay.utils.isValidPhoneNumber
-import com.example.penguinpay.utils.revalidateListener
+import com.example.penguinpay.utils.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
@@ -43,8 +40,14 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
         revalidateListener(binding.firstNameTextField, binding.firstNameLayout)
         revalidateListener(binding.lastNameTextField, binding.lastNameLayout)
         revalidateListener(binding.phoneTextField, binding.phoneLayout)
+        initAmountListener(binding.amountTextField, binding.amountLayout)
         binding.countryLayout.setOnClickListener {
             countrySheet.show(childFragmentManager, Constants.COUNTRY_SHEET_KEY)
+        }
+        binding.sendButton.setOnClickListener {
+            if (isValidPayload()) {
+              getRates()
+            }
         }
     }
 
@@ -55,11 +58,16 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
         binding.countryNameTextView.text = selectedCountry.countryCode
     }
 
+    private fun getRates() {
 
-    private fun isValidRecipient(): Boolean {
+    }
+
+
+    private fun isValidPayload(): Boolean {
         val firstName = isNotEmpty(mainActivity, binding.firstNameTextField, binding.firstNameLayout)
         val lastName = isNotEmpty(mainActivity, binding.lastNameTextField, binding.lastNameLayout)
         val phone = isValidPhoneNumber(mainActivity, binding.phoneTextField, binding.phoneLayout)
-        return firstName && lastName && phone
+        val amount = isValidAmount(mainActivity, binding.amountTextField, binding.amountLayout)
+        return firstName && lastName && phone && amount
     }
 }

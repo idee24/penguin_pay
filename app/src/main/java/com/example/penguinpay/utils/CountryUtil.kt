@@ -11,10 +11,10 @@ import java.util.*
 val countries = LinkedList<CountryModel>()
 
 fun setCountries() {
-    countries.add(CountryModel("NIGERIA", "NGN", R.drawable.flag_nigeria, "+234"))
-    countries.add(CountryModel("GHANA", "GHN", R.drawable.flag_ghana, "+233"))
-    countries.add(CountryModel("UNITED STATES", "USD", R.drawable.flag_united_states_of_america, "+1"))
-    countries.add(CountryModel("UNITED KINGDOM", "GP", R.drawable.flag_united_kingdom, "+44"))
+    countries.add(CountryModel("Nigeria", "NGN", R.drawable.flag_nigeria, "+234"))
+    countries.add(CountryModel("Kenya", "KES", R.drawable.flag_kenya, "+254"))
+    countries.add(CountryModel("Tanzania", "TZS", R.drawable.flag_tanzania, "+255"))
+    countries.add(CountryModel("Uganda", "UGX", R.drawable.flag_uganda, "+256"))
 }
 
 fun getCountryList(): List<CountryModel> {

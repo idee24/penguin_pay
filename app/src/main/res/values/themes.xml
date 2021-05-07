@@ -23,5 +23,11 @@
         <item name="android:background">@drawable/curved_background</item>
     </style>
 
+    <style name="button_theme" parent="Theme.PenguinPay">
+        <item name="android:backgroundTint">@color/gun_metal</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:radius">@dimen/eight_dp</item>
+        <item name="android:elevation">@dimen/four_dp</item>
+    </style>
 
 </resources>

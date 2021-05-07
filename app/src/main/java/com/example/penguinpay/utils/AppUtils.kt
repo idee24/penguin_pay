@@ -27,6 +27,33 @@ fun revalidateListener(inputField: EditText, inputLayout: TextInputLayout) {
     })
 }
 
+fun initAmountListener(inputField: EditText, inputLayout: TextInputLayout) {
+
+    val input = inputField.text.toString().trim()
+    inputField.addTextChangedListener(object : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            if (input.isNotEmpty() && input.matches("[01]+".toRegex())) {
+                inputLayout.isErrorEnabled = false
+            }
+        }
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        }
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        }
+    })
+}
+
+fun isValidAmount(activity: AppCompatActivity, inputField: EditText, inputLayout: TextInputLayout): Boolean {
+    val  target = inputField.text.toString().trim()
+    return if (target.matches("[01]+".toRegex())) {
+        inputLayout.isErrorEnabled = false
+        true
+    } else {
+        inputLayout.error = activity.getString(R.string.valid_binary_error)
+        false
+    }
+}
+
 fun isNotEmpty(activity: AppCompatActivity, inputField: EditText, inputLayout: TextInputLayout): Boolean {
     val  target = inputField.text.toString().trim()
     return if (!TextUtils.isEmpty(target)) {
@@ -37,6 +64,8 @@ fun isNotEmpty(activity: AppCompatActivity, inputField: EditText, inputLayout: T
         false
     }
 }
+
+
 
 fun isValidPhoneNumber(activity: AppCompatActivity, phoneField: EditText,
                        phoneLayout: TextInputLayout
