@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
  */
 
 object ApiClient {
-    fun apiClient(baseUrl: String): Retrofit{
+    fun apiClient(): Retrofit{
         val gson = GsonBuilder()
             .setLenient()
             .create()
@@ -30,7 +30,7 @@ object ApiClient {
         }
 
         return Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(Routes.BASE_URL)
             .client(client.build())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()

@@ -24,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView
         countries[position].let { country ->
             holder.nameTextView.text = country.name
             holder.flagImageView.setImageResource(country.image)
-            holder.itemView.setOnClickListener { onCountrySelected(country.countryCode) }
+            holder.itemView.setOnClickListener { onCountrySelected(country.currencyCode) }
         }
     }
 

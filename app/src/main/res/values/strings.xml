@@ -15,4 +15,8 @@
     <string name="transfer_amount">Transfer Amount</string>
     <string name="send">SEND</string>
     <string name="valid_binary_error">Pleas provide a valid amount in binary</string>
+    <string name="cancel">Cancel</string>
+    <string name="proceed">Proceed</string>
+    <string name="dismiss">DISMISS</string>
+    <string name="exchange_error_message">Unable to retrieve Exchange Rates at this time. Please try again later.</string>
 </resources>

@@ -11,14 +11,14 @@ import com.example.penguinpay.R
 import com.example.penguinpay.adapters.CountrySelectAdapter
 import com.example.penguinpay.databinding.CountrySelectSheetBinding
 import com.example.penguinpay.networking.CountryModel
-import com.example.penguinpay.utils.getCountryList
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.util.*
 
 /**
- *Created by Yerimah on 5/7/2021.
+ *@Created by Yerimah on 5/07/2021.
  */
 class CountrySelectSheet(private val activity: MainActivity,
+                         private val countries: List<CountryModel>,
                          private val onCountrySelected: (String) -> Unit): BottomSheetDialogFragment() {
 
     private lateinit var binding: CountrySelectSheetBinding
@@ -39,6 +39,6 @@ class CountrySelectSheet(private val activity: MainActivity,
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.orientation = RecyclerView.VERTICAL
         binding.countryRecyclerView.layoutManager = layoutManager
-        binding.countryRecyclerView.adapter = CountrySelectAdapter(getCountryList(), onCountrySelected)
+        binding.countryRecyclerView.adapter = CountrySelectAdapter(countries, onCountrySelected)
     }
 }

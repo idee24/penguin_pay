@@ -11,3 +11,18 @@ data class CountryModel(
     var image: Int = 0,
     var countryCode: String = ""
 )
+
+data class RatesResponse(
+        var disclaimer: String?,
+        var license: String?,
+        var timestamp: Long?,
+        var base: String?,
+        var rates: Rates?
+)
+
+data class Rates(
+        var NGN: Double?,
+        var KES: Double?,
+        var TZS: Double?,
+        var UGX: Double?
+)

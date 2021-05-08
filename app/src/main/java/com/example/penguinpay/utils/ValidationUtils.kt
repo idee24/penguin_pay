@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.penguinpay.Constants
 import com.example.penguinpay.R
 import com.google.android.material.textfield.TextInputLayout
 import com.hbb20.CountryCodePicker
@@ -68,16 +69,28 @@ fun isNotEmpty(activity: AppCompatActivity, inputField: EditText, inputLayout: T
 
 
 fun isValidPhoneNumber(activity: AppCompatActivity, phoneField: EditText,
-                       phoneLayout: TextInputLayout
-): Boolean {
+                       phoneLayout: TextInputLayout, countryCode: String): Boolean {
+    val  target = phoneField.text.toString().trim()
 
-    val bon = false
-    return if (bon) {
+    return if (!isValidCountryNumber(countryCode, target)) {
         phoneLayout.error = activity.resources.getString(R.string.invalid_number_error)
         false
-
     } else {
         phoneLayout.isErrorEnabled = false
         true
+    }
+}
+
+fun isValidCountryNumber(countryCode: String, number: String): Boolean {
+    return when (countryCode) {
+        Constants.CURRENCY_CODE_NIGERIA, Constants.CURRENCY_CODE_UGANDA -> {
+            number.length == 7
+        }
+        Constants.CURRENCY_CODE_KENYA, Constants.CURRENCY_CODE_TANZANIA -> {
+            number.length == 9
+        }
+        else -> {
+            false
+        }
     }
 }
