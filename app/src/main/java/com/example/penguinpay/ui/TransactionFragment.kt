@@ -84,10 +84,11 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
                         showLoader(false, binding.appLoader, mainActivity)
 
                         if (resource.data?.rates != null) {
-                            val localAmount = decimalAmount.times(getExchangeRate(resource.data.rates!!) ?: 0.0).toUInt().toString(radix = 2)
-                            val displayAmount = "$selectedCountryCode$localAmount"
+                            val amount = decimalAmount.times(getExchangeRate(resource.data.rates!!) ?: 0.0)
+                            val binaryAmount = amount.toUInt().toString(radix = 2)
+                            val displayAmount = "$selectedCountryCode$binaryAmount"
                             val message = "${binding.firstNameTextField.text.trim()} ${binding.lastNameTextField.text.trim()} " +
-                                    "will receive an amount of \n$displayAmount.\n Will you like to proceed?"
+                                    "will receive an amount of \n$displayAmount.\n\n Will you like to proceed?"
                             FeedbackDialog(mainActivity, message, getString(R.string.proceed), ::successCallBack).show()
                         }
                         else {
@@ -110,7 +111,6 @@ class TransactionFragment : Fragment(R.layout.fragment_transaction) {
 
     private fun successCallBack() {
         findNavController().navigate(R.id.action_transactionFragment_to_successFragment)
-        //todo: Notifications Config
     }
 
     private fun getExchangeRate(rates: Rates): Double? {

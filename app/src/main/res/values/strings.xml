@@ -11,6 +11,8 @@
     <string name="empty_field_error_text">Field Cannot be empty</string>
     <string name="invalid_number_error">Invalid Phone Number</string>
     <string name="penguin_pay">Penguin Pay</string>
+    <string name="channel_name">notify channel</string>
+    <string name="channel_description">notify channel</string>
     <string name="enter_amount_in_binary">Enter amount (In Binary)</string>
     <string name="transfer_amount">Transfer Amount</string>
     <string name="send">SEND</string>
